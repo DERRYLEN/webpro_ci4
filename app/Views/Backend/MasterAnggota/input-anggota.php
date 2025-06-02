@@ -23,7 +23,7 @@
                         echo '<div class="alert alert-danger">' . esc($error) . '</div>';
                     }
                     if ($success) {
-                        echo '<div class="alert alert-success">' . esc($success) . '</div>';
+                        echo '<div class="alert alert-success">Data anggota berhasil ditambahkan!</div>';
                     }
                     ?>
                     <form class="form-horizontal" action="<?= base_url('anggota/simpan-data-anggota'); ?>" method="post">
@@ -85,6 +85,7 @@
                             <div class="form-group">
                                 <div class="col-md-12 widget-right">
                                     <button type="submit" class="btn btn-primary btn-md pull-right">Simpan</button>
+                                    return redirect()->to(base_url('anggota/master-data-anggota'));
                                     <a href="<?= base_url('anggota/master-data-anggota'); ?>" class="btn btn-danger btn-md pull-right" style="margin-right: 10px;">Batal</a>
                                 </div>
                             </div>

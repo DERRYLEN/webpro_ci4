@@ -1,37 +1,52 @@
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
     <div class="row">
         <ol class="breadcrumb">
-            <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
-            <li>Master Data Kategori</li>
+            <li><a href="<?= base_url('admin/dashboard-admin'); ?>"><span class="glyphicon glyphicon-home"></span></a></li>
+            <li>Master Data</li>
             <li class="active">Input Data Kategori</li>
         </ol>
-    </div><div class="row">
+    </div><!--/.row-->
+
+    <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
+                <div class="panel-heading">
+                    Input Data Kategori
+                    <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="glyphicon glyphicon-chevron-up"></em></span>
+                </div>
                 <div class="panel-body">
-                    <h3>Input Kategori</h3>
-                    <hr />
-                    <form action="<?= base_url('kategori/simpan-data-kategori'); ?>" method="post">
-                        <div class="form-group col-md-6">
-                            <label>Nama Kategori</label>
-                            <input type="text" class="form-control" name="nama" placeholder="Masukkan Nama Kategori" required="required">
-                        </div>
-                        <div style="clear:both;"></div>
+                    <?php
+                    // Menampilkan pesan error/sukses
+                    $error = session()->getFlashdata('error');
+                    $success = session()->getFlashdata('success');
+                    if ($error) {
+                        echo '<div class="alert alert-danger">' . esc($error) . '</div>';
+                    }
+                    if ($success) {
+                        echo '<div class="alert alert-success">' . esc($success) . '</div>';
+                    }
+                    ?>
+                    <form class="form-horizontal" action="<?= base_url('kategori/simpan-data-kategori'); ?>" method="post">
+                        <fieldset>
+                            <!-- Nama Kategori input-->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="nama_kategori">Nama Kategori</label>
+                                <div class="col-md-9">
+                                    <input id="nama_kategori" name="nama_kategori" type="text" placeholder="Masukkan Nama Kategori" class="form-control" required>
+                                </div>
+                            </div>
 
-                        <div class="form-group col-md-6">
-                            <label>Deskripsi Kategori</label>
-                            <textarea class="form-control" name="deskripsi" placeholder="Masukkan Deskripsi Kategori" required="required"></textarea>
-                        </div>
-                        <div style="clear:both;"></div>
-
-                        <div class="form-group col-md-6">
-                            <button type="submit" class="btn btn-primary">Simpan</button>
-                            <button type="reset" class="btn btn-danger">Batal</button>
-                        </div>
-                        <div style="clear:both;"></div>
+                            <!-- Form actions -->
+                            <div class="form-group">
+                                <div class="col-md-12 widget-right">
+                                    <button type="submit" class="btn btn-primary btn-md pull-right">Simpan</button>
+                                    <a href="<?= base_url('kategori/master-data-kategori'); ?>" class="btn btn-danger btn-md pull-right" style="margin-right: 10px;">Batal</a>
+                                </div>
+                            </div>
+                        </fieldset>
                     </form>
                 </div>
             </div>
         </div>
-
-    </div></div>
+    </div><!--/.row-->
+</div> <!--/.main-->
